@@ -6,6 +6,7 @@ import {
   WrapperImageStyle,
   WrapperPriceText,
   WrapperReportText,
+  WrapperStyleTextSell,
 } from "./style";
 import { StarFilled } from "@ant-design/icons";
 import logo from "../../assets/images/logo.png";
@@ -32,7 +33,7 @@ export default function CardComponent() {
           <span>4.96</span>
           <StarFilled style={{ fontSize: "10px", color: "yellow" }} />
         </span>
-        <span> | Đã bán 1000+</span>
+        <WrapperStyleTextSell> | Đã bán 1000+</WrapperStyleTextSell>
       </WrapperReportText>
       <WrapperPriceText>
         1.000.000đ
