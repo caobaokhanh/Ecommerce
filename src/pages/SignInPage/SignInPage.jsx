@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   WrapperContainerLeft,
   WrapperContainerRight,
@@ -8,8 +8,12 @@ import InputForm from "../../components/InputForm/InputForm";
 import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 import { Divider, Image } from "antd";
 import logosignin from "../../assets/images/login-signin.png";
+import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons";
 
 export default function SignInPage() {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+
   return (
     <div
       style={{
@@ -37,7 +41,26 @@ export default function SignInPage() {
             style={{ marginBottom: "10px" }}
             placeholder="abc@gmail.com"
           />
-          <InputForm placeholder="password" />
+
+          <div style={{ position: "relative" }}>
+            <span
+              onClick={() => setIsShowPassword(!isShowPassword)}
+              style={{
+                zIndex: 10,
+                position: "absolute",
+                top: "4px",
+                right: "8px",
+              }}
+            >
+              {isShowPassword ? <EyeFilled /> : <EyeInvisibleFilled />}
+            </span>
+            <InputForm
+              placeholder="password"
+              type={isShowPassword ? "text" : "password"}
+              value={password}
+              // onChange={handleOnchangePassword}
+            />
+          </div>
 
           <ButtonComponent
             bordered={false}

@@ -16,22 +16,32 @@ import ButtonInputSearch from "../ButtonInputSearch/ButtonInputSearch";
 
 export default function Header() {
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        background: "rgb(26, 148, 255)",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <WrapperHeader>
-        <Col span={6}>
+        <Col span={5}>
           <WrapperTextHeader>BK-SHOP</WrapperTextHeader>
         </Col>
-        <Col span={12}>
+
+        <Col span={13}>
           <ButtonInputSearch
             size="large"
+            bordered={false}
             textButton="Tìm Kiếm"
             placeholder="input search text"
             // onSearch={onSearch}
           />
         </Col>
+
         <Col
           span={6}
-          style={{ display: "flex", gap: "20px", alignItems: "center" }}
+          style={{ display: "flex", gap: "54px", alignItems: "center" }}
         >
           <WrapperHeaderAccount>
             <UserOutlined style={{ fontSize: "30px" }} />

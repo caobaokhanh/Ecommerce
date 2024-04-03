@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   WrapperContainerLeft,
   WrapperContainerRight,
@@ -8,8 +8,14 @@ import InputForm from "../../components/InputForm/InputForm";
 import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 import logosignin from "../../assets/images/login-signin.png";
 import { Image } from "antd";
+import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons";
 
 export default function SignUpPage() {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   return (
     <div
       style={{
@@ -37,8 +43,48 @@ export default function SignUpPage() {
             style={{ marginBottom: "10px" }}
             placeholder="abc@gmail.com"
           />
-          <InputForm style={{ marginBottom: "10px" }} placeholder="password" />
-          <InputForm placeholder="confirm password" />
+          {/* <InputForm style={{ marginBottom: "10px" }} placeholder="password" /> */}
+
+          <div style={{ position: "relative" }}>
+            <span
+              onClick={() => setIsShowPassword(!isShowPassword)}
+              style={{
+                zIndex: 10,
+                position: "absolute",
+                top: "4px",
+                right: "8px",
+              }}
+            >
+              {isShowPassword ? <EyeFilled /> : <EyeInvisibleFilled />}
+            </span>
+            <InputForm
+              placeholder="password"
+              style={{ marginBottom: "10px" }}
+              type={isShowPassword ? "text" : "password"}
+              value={password}
+              // onChange={handleOnchangePassword}
+            />
+          </div>
+
+          <div style={{ position: "relative" }}>
+            <span
+              onClick={() => setIsShowConfirmPassword(!isShowConfirmPassword)}
+              style={{
+                zIndex: 10,
+                position: "absolute",
+                top: "4px",
+                right: "8px",
+              }}
+            >
+              {isShowConfirmPassword ? <EyeFilled /> : <EyeInvisibleFilled />}
+            </span>
+            <InputForm
+              placeholder="comfirm password"
+              type={isShowConfirmPassword ? "text" : "password"}
+              value={confirmPassword}
+              // onChange={handleOnchangeConfirmPassword}
+            />
+          </div>
 
           <ButtonComponent
             bordered={false}
